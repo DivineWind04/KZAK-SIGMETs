@@ -23,10 +23,10 @@ DEFAULT_FILENAME = 'SIGMET.XML'
 """str: Default output filename for the new map XML file."""
 
 DEFAULT_MAP_ATTRIBUTES = {
-    'Type'             : 'Filled',
+    'Type'             : 'REST_NTZ_DAIW',
     'Name'             : 'SIGMETS',
     'Priorty'          : '1',
-    'CustomColourName' : 'Indigo'
+    'CustomColourName' : 'PRDArea'
 }
 """dict[str, str]: Dictionary defining default map attributes for the new SIGMETs map."""
 # END Constants
@@ -149,8 +149,7 @@ def lat_to_str(coord: float) -> str:
 
 def make_infill_xml(sigmet_poly: list[list[float]]) -> etree.Element:
     # Create the empty elements
-    infill_element = etree.Element('Infill')  
-    point_element = etree.SubElement(infill_element, 'Point')
+    point_element = etree.SubElement(infill_element, 'Line')
 
     # Create all the point strings from the poly coords and add inside <Point> element
     point_strings = [lat_to_str(latitude) + long_to_str(longitude) for longitude, latitude in sigmet_poly]
